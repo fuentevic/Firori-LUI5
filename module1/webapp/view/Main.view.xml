@@ -1,8 +1,7 @@
-<mvc:View controllerName="namespace.module1.controller.Main"
-    xmlns:mvc="sap.ui.core.mvc"
-    xmlns="sap.m">
+<mvc:View controllerName="namespace.module1.controller.Main" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m">
     <Page id="page" title="{i18n>title}">
-        <Text text="{i18n>saludo}"/>
-        <Text text="{i18n>subtitle}"/>
+        <Text id="idSaludo" text="{i18n>saludo}"/>
+        <Button id="button" type="Accept" text="{i18n>aceptar}" press="onPress"/>
+        <Text id="idSubtitle" text="{i18n>subtitle}"/>
     </Page>   
 </mvc:View>
