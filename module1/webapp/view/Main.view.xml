@@ -3,5 +3,28 @@
         <Text id="idSaludo" text="{i18n>saludo}"/>
         <Button id="button" type="Accept" text="{i18n>aceptar}" press="onPress"/>
         <Text id="idSubtitle" text="{i18n>subtitle}"/>
+
+        <Panel id="idPrimerEjercicio" expandable="true" headerText="Primer Ejercicio" width="auto" class="sapUiResponsiveMargin">
+            <content>
+                <VBox>
+                    <Label id="labelEJ1" text="Desplazar texto izquierda al texto derecha"/>
+                    <HBox alignItems="Center">
+                        <Text id="primerTextoEJ1" text="Texto izquierda"/>
+                        <Button id="desplazarEJ1" type="Attention" text="{i18n>desplazar}" press="onDesplazar"/>
+                        <Text id="segundoTextoEJ1" text="Texto derecha"/>
+                    </HBox>
+                </VBox>
+                <HBox alignItems="Center">
+                    <Input id="inputEJ1" placeholder="Esto va al texto de arriba..."/>
+                    <Button text="Añadir texto" press="onAnhadir"/> 
+                </HBox>
+            </content>
+	    </Panel>
+
+        <Panel id="idSegundoEjercicio" expandable="true" headerText="Segundo Ejercicio" width="auto" class="sapUiResponsiveMargin">
+            <content>
+                
+            </content>
+	    </Panel>    
     </Page>   
 </mvc:View>
