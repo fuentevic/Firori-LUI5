@@ -1,8 +1,14 @@
 <mvc:View controllerName="namespace.module1.controller.Main" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m">
     <Page id="page" title="{i18n>title}">
+        <VBox>
         <Text id="idSaludo" text="{i18n>saludo}"/>
+        <HBox>
         <Button id="button" type="Accept" text="{i18n>aceptar}" press="onPress"/>
+        <Button id="button1" type="Reject" text="{i18n>rechazar}" press="onPress1"/>
+        <Button id="button2" type="Reject" text="{i18n>borrar}" press="onPress2"/>
+        </HBox>
         <Text id="idSubtitle" text="{i18n>subtitle}"/>
+
 
         <Panel id="idPrimerEjercicio" expandable="true" headerText="Primer Ejercicio" width="auto" class="sapUiResponsiveMargin">
             <content>
@@ -26,5 +32,8 @@
                 
             </content>
 	    </Panel>    
+
+        </VBox>
+
     </Page>   
 </mvc:View>
