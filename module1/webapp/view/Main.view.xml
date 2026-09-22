@@ -10,10 +10,10 @@
         <Text id="idSubtitle" text="{i18n>subtitle}"/>
 
 
-        <Panel id="idPrimerEjercicio" expandable="true" headerText="Primer Ejercicio" width="auto" class="sapUiResponsiveMargin">
+        <Panel id="idDesplazarTexto" expandable="true" headerText="{i18n>desplazar}" width="auto" class="sapUiResponsiveMargin">
             <content>
                 <VBox>
-                    <Label id="labelEJ1" text="Desplazar texto izquierda al texto derecha"/>
+                    <Label id="labelEJ" text="Desplazar texto izquierda al texto derecha"/>
                     <HBox alignItems="Center">
                         <Text id="primerTextoEJ1" text="Texto izquierda"/>
                         <Button id="desplazarEJ1" type="Attention" text="{i18n>desplazar}" press="onDesplazar"/>
@@ -21,18 +21,124 @@
                     </HBox>
                 </VBox>
                 <HBox alignItems="Center">
-                    <Input id="inputEJ1" placeholder="Esto va al texto de arriba..."/>
-                    <Button text="Añadir texto" press="onAnhadir"/> 
+                    <Input id="inputEJ" placeholder="Esto va al texto de arriba..."/>
+                    <Button id="anadir" text="Añadir texto" press="onAnhadir"/> 
                 </HBox>
             </content>
 	    </Panel>
 
-        <Panel id="idSegundoEjercicio" expandable="true" headerText="Segundo Ejercicio" width="auto" class="sapUiResponsiveMargin">
+        <Panel id="idPrimerEjercicio" expandable="true" headerText="{i18n>Ejercicio1}" width="auto" class="sapUiResponsiveMargin">
             <content>
-                
+                <VBox>
+                    <Label id="labelEJ1" text="{i18n>LabelEdad}"/>
+                    <Input id="inputEJ1" placeholder="{i18n>PlaceHEdad}"/>
+                    <Button id="ComprobarEdad" text="{i18n>CompEdad}" press="onComprobarEdad"/> 
+                <HBox alignItems="Center">
+                    <Text id="DesciptivoEJ1" text="{i18n>DesciptivoEJ1}"/>
+                    <Label id="label2EJ1" text="{i18n>LabelSituacion}"/>
+                </HBox>
+    
+                  
+                </VBox>                
             </content>
 	    </Panel>    
 
+        <Panel id="idSegundoEjercicio" expandable="true" headerText="{i18n>Ejercicio2}" width="auto" class="sapUiResponsiveMargin">
+            <content>
+                 <VBox>
+                    <Label id="labelEJ2" text="{i18n>LabelDia}"/>
+                    <Input id="inputEJ2" placeholder="{i18n>PlaceHDia}"/>
+                    <Button id="ComprobarDia" text="{i18n>CompDia}" press="onComprobarDia"/> 
+                <HBox alignItems="Center">
+                    <Text id="DesciptivoEJ2" text="{i18n>DesciptivoEJ2}"/>
+                    <Label id="label2EJ2" text="{i18n>LabelSemana}"/>
+                </HBox>
+    
+                  
+                </VBox>      
+            </content>
+	    </Panel>    
+
+        <Panel id="idTercerEjercicio" expandable="true" headerText="{i18n>Ejercicio3}" width="auto" class="sapUiResponsiveMargin">
+            <content>
+                 <VBox>
+                    <Label id="labelEJ3" text="{i18n>LabelTabla}"/>
+                    <Button id="Tabla5" text="{i18n>Tabla5}" press="onTabla5"/> 
+                <HBox alignItems="Center">
+                    <Text id="DesciptivoEJ3" text="{i18n>DesciptivoEJ3}"/>
+                </HBox>
+                  
+                </VBox>  
+            </content>
+	    </Panel>    
+
+        <Panel id="idCuartoEjercicio" expandable="true" headerText="{i18n>Ejercicio4}" width="auto" class="sapUiResponsiveMargin">
+            <content>
+                <VBox>
+                    <Label id="labelEJ4" text="{i18n>LabelContinue}"/>
+                    <Button id="Salto3" text="{i18n>Salto3}" press="onSalto3"/> 
+                <HBox alignItems="Center">
+                    <Text id="DesciptivoEJ4" text="{i18n>DesciptivoEJ4}"/>
+                </HBox>
+                
+                </VBox>
+            </content>
+	    </Panel>    
+
+        <Panel id="idQuintoEjercicio" expandable="true" headerText="{i18n>Ejercicio5}" width="auto" class="sapUiResponsiveMargin">
+            <content>
+                <VBox>
+                    <Label id="labelEJ5" text="{i18n>LabelPares}"/>
+                    <Button id="Pares" text="{i18n>BotonPares}" press="onPares"/> 
+                <HBox alignItems="Center">
+                    <Text id="DesciptivoEJ5" text="{i18n>DesciptivoEJ5}"/>
+                </HBox>
+                
+                </VBox>
+            </content>
+	    </Panel>    
+
+        <Panel id="idSextoEjercicio" expandable="true" headerText="{i18n>Ejercicio6}" width="auto" class="sapUiResponsiveMargin">
+            <content>
+                <VBox>
+                    <Label id="labelEJ6" text="{i18n>LabelEstricto}"/>
+                    <Button id="Estricto" text="{i18n>BotonEstricto}" press="onEstricto"/> 
+                <HBox alignItems="Center">
+                    <Text id="DesciptivoEJ6" text="{i18n>DesciptivoEJ6}"/>
+                </HBox>
+                
+                </VBox>
+            </content>
+	    </Panel>    
+
+        <Panel id="idSeptimoEjercicio" expandable="true" headerText="{i18n>Ejercicio7}" width="auto" class="sapUiResponsiveMargin">
+            <content>
+                <VBox>
+                    <Label id="labelEJ7" text="{i18n>LabelBreak}"/>
+                    <Button id="Break" text="{i18n>BotonBreak}" press="onBreak"/> 
+                <HBox alignItems="Center">
+                    <Text id="DesciptivoEJ7" text="{i18n>DesciptivoEJ7}"/>
+                </HBox>
+                
+                </VBox>
+            </content>
+	    </Panel>    
+
+        <Panel id="idOctavoEjercicio" expandable="true" headerText="{i18n>Ejercicio8}" width="auto" class="sapUiResponsiveMargin">
+            <content>
+                <VBox>
+                    <Label id="labelEJ8" text="{i18n>LabelConducir}"/>
+                    <Input id="inputEJ8" placeholder="{i18n>PlaceHConduEdad}"/>
+                    <Input id="input2EJ8" placeholder="{i18n>PlaceHConduCarnet}"/>
+                    <Button id="ComprobarConducir" text="{i18n>CompConducir}" press="onComprobarConducir"/> 
+                <HBox alignItems="Center">
+                    <Label id="label2EJ8" text="{i18n>LabelSituCond}"/>
+                </HBox>
+    
+                  
+                </VBox>
+            </content>
+	    </Panel>
         </VBox>
 
     </Page>   
