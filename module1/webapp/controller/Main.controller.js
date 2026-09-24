@@ -8,9 +8,17 @@ sap.ui.define([
     return Controller.extend("namespace.module1.controller.Main", {
         onInit() 
         {
-    this.txtIzquierda = 1;
-    this.txtDerecha = 1;
-    this.save= 1;
+            this.txtIzquierda = 1;
+            this.txtDerecha = 1;
+            this.save= 1;
+
+            var oModel = new sap.ui.model.json.JSONModel({
+                Name: "Victor",
+                Age: 67,
+                Direction: "Direction 1234 B"
+            });
+
+            this.getView().setModel(oModel,"modeloPrueba");
             
         },
 
@@ -57,6 +65,8 @@ sap.ui.define([
             let oInput = this.getView().byId("inputEJ");
             this.getView().byId("primerTextoEJ1").setText(oInput.getValue());
 
+            this.getView().getModel("modeloPrueba").setProperty("/Age",oInput.getValue());
+
         },
 
         //Ejercicio 1:
@@ -64,8 +74,14 @@ sap.ui.define([
             let eInput = this.getView().byId("inputEJ1").getValue();
             let oBundle = this.getView().getModel("i18n").getResourceBundle();
 
+            // TODO: CONTROL DE POSIBLES ERRORES AL INTRODUCIR ALGO
+            // CÓDIGO
+
             if (eInput < 18){
                 this.getView().byId("label2EJ1").setText(oBundle.getText("Menor"));
+                // TODO: SI ES MENOR DE EDAD, HAZ ENABLED LOS INPUTS DE LA SECCIÓN "DATOS PADRE" DE LA VISTA
+                // PISTA: Mirar métodos del elemento/os UI5 
+                // CÓDIGO
             }
             else if (eInput >= 18 && eInput < 67) {
                 this.getView().byId("label2EJ1").setText(oBundle.getText("Mayor"));
@@ -73,7 +89,16 @@ sap.ui.define([
             else {
                 this.getView().byId("label2EJ1").setText(oBundle.getText("Jubilado"));
             }
-            },
+        },
+
+        // SEGUIMOS EN EL EJERCICIO 1:
+        onComprobarEdadAdulto: function()
+        {
+            //TODO: Comprobar que el adulto ha introducido bien los datos
+            //      Una vez comprobado todo, si es correcto, hacemos que desaparezcan los elementos en "DATOS PADRE".
+            //      Si es incorrecto algún campo introducido, borramos lo que haya en el input para que el usuario vuelva a introducir de nuevo.
+            //      En las dos posibles opciones, debemos hacer que la Label (id=labelRespuesta) muestre texto descriptivo de lo que pasa. 
+        },
 
         //Ejercicio 2:
         onComprobarDia: function (){
@@ -95,8 +120,20 @@ sap.ui.define([
                    this.getView().byId("label2EJ2").setText(dBundle.getText("Normal"));              
             }
             
-            },
+        },
+
+        /**
+         * TODO: NECESITO QUE EL USUARIO PUEDA INTRODUCIR, EN MAYUS/MINUS, CON TILDE/SIN TILDE, EL DÍA DE LA SEMANA.
+         *       CUALQUIER COSA QUE NO SEA DÍA DE LA SEMANA, MOSTRAMOS MENSAJE DE ERROR.
+         * 
+         * PISTA: MIRAR LA DOCUMENTACIÓN SOBRE MÉTODOS DE UN OBJETO STRING. 
+         *        STRING METHODS: https://www.w3schools.com/js/js_string_methods.asp 
+         */
+        newOnComprobarDia: function (){
+            //TODO
+        },
         
+        //EJERCICIO 3:
         onTabla5: function (){
             let resultado =""
 
@@ -106,6 +143,22 @@ sap.ui.define([
             this.getView().byId("DesciptivoEJ3").setText(resultado);
         },
 
+        /**
+         * TODO: DEJAR QUE EL USUARIO DECIDA QUE TABLA DE MULTIPLICAR QUIERE
+         *       COMPROBAR SI ES UN NÚMERO VÁLIDO. SI LO ES, MOSTRAR TABLA DE MULTIPLICAR DE ESE NÚMERO.
+         *       SI NO LO ES, BORRAR LO QUE HA INTRODUCIDO EN EL INPUT, Y MOSTRARLE UN MENSAJE DE "NÚMERO ERRONEO"
+         * 
+         * PUNTOS EXTRA: SI TE ANIMAS A SUBIR UN POCO EL NIVEL DE DIFICULTAD, USA EL OBJETO ARRAY COMO PUNTO DE PARTIDA DEL EJERCICIO.
+         *               TE DEJO LA DECLARACIÓN DEL ARRAY EN EL MÉTODO. ÚSALO SI QUIERES UN PUNTO EXTRA EN LA NOTA FINAL. (BROMA)
+         *               SOLO SI USAS LOS ARRAYS COMO VARIABLE, TE DEJO LA DOCUMENTACIÓN SOBRE ELLO: https://www.w3schools.com/js/js_arrays.asp
+         */
+        onTablaMultiplicar: function()
+        {
+            // let aResultado = []; // Inicialización de un array (Para el punto extra final).
+            //TODO
+        },
+
+        //EJERCICIO 4:
         onSalto3: function (){
             let resultado2 =""
 
@@ -116,6 +169,7 @@ sap.ui.define([
             this.getView().byId("DesciptivoEJ4").setText(resultado2);
         }, 
         
+        //EJERCICIO 5:
         onPares:  function (){
             let j =2
             let resultado5 =""
@@ -127,6 +181,7 @@ sap.ui.define([
             this.getView().byId("DesciptivoEJ5").setText(resultado5);
         },
         
+        //EJERCICIO 6:
         onEstricto: function (){
             let A = 5;
             let B = "5";
@@ -143,7 +198,7 @@ sap.ui.define([
             }
             },
 
-
+        //EJERCICIO 7:
         onBreak: function (){
             let resultado7 =""
 
@@ -154,6 +209,7 @@ sap.ui.define([
             this.getView().byId("DesciptivoEJ7").setText(resultado7);
         },
 
+        //EJERCICIO 8:
         onComprobarConducir:function (){
             let edadInput = 1;
             let conduInput= "";

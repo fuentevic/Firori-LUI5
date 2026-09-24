@@ -24,54 +24,80 @@
                     <Input id="inputEJ" placeholder="Esto va al texto de arriba..."/>
                     <Button id="anadir" text="Añadir texto" press="onAnhadir"/> 
                 </HBox>
+
+                <Text text="Nombre: {modeloPrueba>/Name} - Age: {modeloPrueba>/Age}"></Text>
             </content>
 	    </Panel>
 
+        <!--EJERCICIO 1-->
         <Panel id="idPrimerEjercicio" expandable="true" headerText="{i18n>Ejercicio1}" width="auto" class="sapUiResponsiveMargin">
             <content>
-                <VBox>
-                    <Label id="labelEJ1" text="{i18n>LabelEdad}"/>
-                    <Input id="inputEJ1" placeholder="{i18n>PlaceHEdad}"/>
-                    <Button id="ComprobarEdad" text="{i18n>CompEdad}" press="onComprobarEdad"/> 
-                <HBox alignItems="Center">
-                    <Text id="DesciptivoEJ1" text="{i18n>DesciptivoEJ1}"/>
-                    <Label id="label2EJ1" text="{i18n>LabelSituacion}"/>
-                </HBox>
-    
-                  
-                </VBox>                
+                <HBox alignContent="Center" alignItems="Stretch" justifyContent="SpaceBetween" renderType="List">
+                    <VBox alignContent="Start" alignItems="Center">
+                        <Label id="labelEJ1" text="{i18n>LabelEdad}"/>
+                        <Input id="inputEJ1" placeholder="{i18n>PlaceHEdad}"/>
+                        <Button id="ComprobarEdad" text="{i18n>CompEdad}" press="onComprobarEdad"/> 
+                        <HBox alignItems="Center">
+                            <Text id="DesciptivoEJ1" text="{i18n>DesciptivoEJ1}"/>
+                            <Label id="label2EJ1" text="{i18n>LabelSituacion}"/>
+                        </HBox>
+                    </VBox>
+                    <!-- DATOS PADRE -->
+                    <VBox alignContent="Center" alignItems="Stretch" justifyContent="SpaceBetween">
+                        <HBox alignItems="Center">
+                            <Label text="Nombre del adulto: "/>
+                            <Input placeholder="Introduce el nombre aquí..."/>
+                        </HBox>
+                        <HBox alignItems="Center">
+                            <Label text="Edad del adulto: "/>
+                            <Slider value="50" width="200%" min="0" max="100" showAdvancedTooltip="true" showHandleTooltip="false" inputsAsTooltips="true" />
+                        </HBox>
+                        <HBox alignItems="Center">
+                            <Button id="ComprobarEdadAdulto" text="{i18n>CompEdad}" press="onComprobarEdadAdulto"/> 
+                        </HBox>
+                        <HBox alignItems="Center">
+                             <Label text="Esperando respuesta..."/>
+                        </HBox>
+                    </VBox>
+                </HBox>                
             </content>
 	    </Panel>    
 
+        <!--EJERCICIO 2-->
         <Panel id="idSegundoEjercicio" expandable="true" headerText="{i18n>Ejercicio2}" width="auto" class="sapUiResponsiveMargin">
             <content>
                  <VBox>
                     <Label id="labelEJ2" text="{i18n>LabelDia}"/>
                     <Input id="inputEJ2" placeholder="{i18n>PlaceHDia}"/>
                     <Button id="ComprobarDia" text="{i18n>CompDia}" press="onComprobarDia"/> 
-                <HBox alignItems="Center">
-                    <Text id="DesciptivoEJ2" text="{i18n>DesciptivoEJ2}"/>
-                    <Label id="label2EJ2" text="{i18n>LabelSemana}"/>
-                </HBox>
-    
-                  
-                </VBox>      
+                    <HBox alignItems="Center">
+                        <Text id="DesciptivoEJ2" text="{i18n>DesciptivoEJ2}"/>
+                        <Label id="label2EJ2" text="{i18n>LabelSemana}"/>
+                    </HBox>
+                </VBox>
+
             </content>
 	    </Panel>    
 
+        <!--EJERCICIO 3-->
         <Panel id="idTercerEjercicio" expandable="true" headerText="{i18n>Ejercicio3}" width="auto" class="sapUiResponsiveMargin">
             <content>
-                 <VBox>
-                    <Label id="labelEJ3" text="{i18n>LabelTabla}"/>
-                    <Button id="Tabla5" text="{i18n>Tabla5}" press="onTabla5"/> 
-                <HBox alignItems="Center">
-                    <Text id="DesciptivoEJ3" text="{i18n>DesciptivoEJ3}"/>
-                </HBox>
-                  
-                </VBox>  
+                <HBox>
+                    <VBox>
+                        <HBox>
+                            <Label id="labelEJ3" text="{i18n>LabelTabla}"/>
+                            <Input id="inputMultiplicador" value="0" placeholder="Introduce multiplicador..."/>
+                        </HBox>
+                        <Button id="Tabla5" text="{i18n>Tabla5}" press="onTabla5"/> 
+                        <HBox alignItems="Center">
+                            <Text id="DesciptivoEJ3" text="{i18n>DesciptivoEJ3}"/>
+                        </HBox>
+                    </VBox>
+                </HBox>  
             </content>
 	    </Panel>    
 
+        <!--EJERCICIO 4-->
         <Panel id="idCuartoEjercicio" expandable="true" headerText="{i18n>Ejercicio4}" width="auto" class="sapUiResponsiveMargin">
             <content>
                 <VBox>
@@ -85,6 +111,7 @@
             </content>
 	    </Panel>    
 
+        <!--EJERCICIO 5-->
         <Panel id="idQuintoEjercicio" expandable="true" headerText="{i18n>Ejercicio5}" width="auto" class="sapUiResponsiveMargin">
             <content>
                 <VBox>
@@ -98,6 +125,7 @@
             </content>
 	    </Panel>    
 
+        <!--EJERCICIO 6-->
         <Panel id="idSextoEjercicio" expandable="true" headerText="{i18n>Ejercicio6}" width="auto" class="sapUiResponsiveMargin">
             <content>
                 <VBox>
@@ -111,6 +139,7 @@
             </content>
 	    </Panel>    
 
+        <!--EJERCICIO 7-->
         <Panel id="idSeptimoEjercicio" expandable="true" headerText="{i18n>Ejercicio7}" width="auto" class="sapUiResponsiveMargin">
             <content>
                 <VBox>
@@ -124,6 +153,7 @@
             </content>
 	    </Panel>    
 
+        <!--EJERCICIO 8-->
         <Panel id="idOctavoEjercicio" expandable="true" headerText="{i18n>Ejercicio8}" width="auto" class="sapUiResponsiveMargin">
             <content>
                 <VBox>
@@ -139,6 +169,9 @@
                 </VBox>
             </content>
 	    </Panel>
+
+        
+
         </VBox>
 
     </Page>   
