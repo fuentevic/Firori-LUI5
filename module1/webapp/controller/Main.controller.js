@@ -11,6 +11,8 @@ sap.ui.define([
             this.txtIzquierda = 1;
             this.txtDerecha = 1;
             this.save= 1;
+            this.controlpadre= false;
+            //this.aInput= "Name";
 
             var oModel = new sap.ui.model.json.JSONModel({
                 Name: "Victor",
@@ -74,11 +76,16 @@ sap.ui.define([
             let eInput = this.getView().byId("inputEJ1").getValue();
             let oBundle = this.getView().getModel("i18n").getResourceBundle();
 
-            // TODO: CONTROL DE POSIBLES ERRORES AL INTRODUCIR ALGO
-            // CÓDIGO
-
-            if (eInput < 18){
+            if (eInput>=0 && eInput<=150){ // Control de Posibles Errores - Edad introducida es correcta, entre 0 y 150
+    
+     
+            if (eInput < 18){ 
                 this.getView().byId("label2EJ1").setText(oBundle.getText("Menor"));
+                //console.log(this.getView().byId("NombrePadre").getEnabled());
+                this.getView().byId("NombrePadre").setEnabled(true); //Mostrar sección Datos Padre de la Vista
+                //this.getView().byId("SliderPadre").setEnabled(true);
+                this.getView().byId("ComprobarEdadAdulto").setEnabled(true);
+
                 // TODO: SI ES MENOR DE EDAD, HAZ ENABLED LOS INPUTS DE LA SECCIÓN "DATOS PADRE" DE LA VISTA
                 // PISTA: Mirar métodos del elemento/os UI5 
                 // CÓDIGO
@@ -88,17 +95,68 @@ sap.ui.define([
             }
             else {
                 this.getView().byId("label2EJ1").setText(oBundle.getText("Jubilado"));
-            }
-        },
+            };
+             
+                 
 
-        // SEGUIMOS EN EL EJERCICIO 1:
-        onComprobarEdadAdulto: function()
-        {
+        
+    }
+     else {
+                this.getView().byId("label2EJ1").setText(oBundle.getText("ErrorEdad"));
+            }
+    },
+
+            // SEGUIMOS EN EL EJERCICIO 1:
+
+            
+            onComprobarEdadAdulto: function() {
+            let aInput = this.getView().byId("NombrePadre").getValue();
+            let iInput = this.getView().byId("SliderPadre").getValue();   
+            let padres = ["luis","victor","pepe","paco"];
+            let aBundle = this.getView().getModel("i18n").getResourceBundle();     
+            
+            for (let i=1; i<=padres.length-1;i++){
+               if (this.controlpadre == "ok"){
+                break;
+                    if (aInput== padres[i-1]){
+                    //activa slider
+                    this.getView().byId("LabelRespuestaPadre").setText(aBundle.getText("PadreBBDD"));
+                    this.getView().byId("SliderPadre").setEnabled(true);
+                    this.controlpadre= "ok";
+                     break;
+                }
+                else{this.getView().byId("LabelRespuestaPadre").setText(aBundle.getText("PadreNoBBDD"));
+                }
+                }
+            };
+
+            if (this.getView().byId("SliderPadre").getEnabled() == true){
+            
+            }
+            if (this.controlpadre=="ok") {
+                if (iInput>18) { // Control de Posibles Errores - Edad introducida es correcta, entre 0 y 150
+            this.getView().byId("LabelRespuestaPadre").setText(aBundle.getText("Autorizado"));
+            }
+            
+            
+            else { // Edad introducida es menor de edad
+            this.getView().byId("LabelRespuestaPadre").setText(aBundle.getText("ErrorEdad2"));
+            }
+        }
+            else {
+            this.getView().byId("LabelRespuestaPadre").setText(aBundle.getText("PadreNoBBDD"));  
+            }
+            //let oBundle = this.getView().getModel("i18n").getResourceBundle();
+
+
+
             //TODO: Comprobar que el adulto ha introducido bien los datos
             //      Una vez comprobado todo, si es correcto, hacemos que desaparezcan los elementos en "DATOS PADRE".
             //      Si es incorrecto algún campo introducido, borramos lo que haya en el input para que el usuario vuelva a introducir de nuevo.
             //      En las dos posibles opciones, debemos hacer que la Label (id=labelRespuesta) muestre texto descriptivo de lo que pasa. 
+        
         },
+           
 
         //Ejercicio 2:
         onComprobarDia: function (){

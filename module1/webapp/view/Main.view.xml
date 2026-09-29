@@ -45,18 +45,23 @@
                     <!-- DATOS PADRE -->
                     <VBox alignContent="Center" alignItems="Stretch" justifyContent="SpaceBetween">
                         <HBox alignItems="Center">
-                            <Label text="Nombre del adulto: "/>
-                            <Input placeholder="Introduce el nombre aquí..."/>
+                            <Label id="TextPadre" text="Nombre del adulto: "/>
+                            <Input id="NombrePadre" 
+                            placeholder="Introduce el nombre aquí..."
+                            enabled="false"
+                            />
                         </HBox>
                         <HBox alignItems="Center">
-                            <Label text="Edad del adulto: "/>
-                            <Slider value="50" width="200%" min="0" max="100" showAdvancedTooltip="true" showHandleTooltip="false" inputsAsTooltips="true" />
+                            <Label id="EdadPadre" text="Edad del adulto: "/>
+                            <Slider id="SliderPadre" value="50" width="200%" min="0" max="100" showAdvancedTooltip="true" showHandleTooltip="false" inputsAsTooltips="true" 
+                            enabled="false"/>
                         </HBox>
                         <HBox alignItems="Center">
-                            <Button id="ComprobarEdadAdulto" text="{i18n>CompEdad}" press="onComprobarEdadAdulto"/> 
+                            <Button id="ComprobarEdadAdulto" text="{i18n>CompEdad}" press="onComprobarEdadAdulto"
+                            enabled="false"/> 
                         </HBox>
                         <HBox alignItems="Center">
-                             <Label text="Esperando respuesta..."/>
+                             <Label id="LabelRespuestaPadre" text="Esperando respuesta..."/>
                         </HBox>
                     </VBox>
                 </HBox>                
