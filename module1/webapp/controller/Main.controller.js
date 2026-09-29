@@ -1,9 +1,11 @@
 sap.ui.define([
-    "sap/ui/core/mvc/Controller"
-], (Controller) => {
+    "sap/ui/core/mvc/Controller",
+    "sap/ui/model/json/JSONModel",
+], (Controller, JSONModel) => {
     "use strict";
     this.txtIzquierda = 1;
     this.txtDerecha = 1;
+
 
     return Controller.extend("namespace.module1.controller.Main", {
         onInit() 
@@ -14,14 +16,50 @@ sap.ui.define([
             this.controlpadre= false;
             //this.aInput= "Name";
 
-            var oModel = new sap.ui.model.json.JSONModel({
-                Name: "Victor",
-                Age: 67,
-                Direction: "Direction 1234 B"
-            });
+            let oModel = new JSONModel(
+                {
+                    Clientes:
+                    [
+                        {
+                            Nombre: "Luis",
+                            Cartera: 30,
+                            Carrito: ["Carne", "Pescado", "Verdura"],
+                            Pagado: false  
+                        },
+                        {
+                            Nombre: "Pepe",
+                            Cartera: 10,
+                            Carrito: ["Fruta"],
+                            Pagado: true  
+                        }
+                    ]
+                }
+            );
+            this.getView().setModel(oModel, "Cliente");
 
-            this.getView().setModel(oModel,"modeloPrueba");
+
+
+
+            let fModel = new JSONModel(
+                {
+                    Nombre: "Fresa",
+                    Precio: 200,
+                    Unidad: "€"
+                }
+            );
+
             
+            this.getView().setModel(fModel, "Fruta");
+            
+        },
+
+        onFruta: function()
+        {
+            let modelPrecio = this.getView().getModel("Fruta").getProperty("/Precio");
+            let inputPrecio = this.getView().byId("iFruta").getValue();
+
+            this.getView().getModel("Fruta").setProperty("/Precio", inputPrecio);
+
         },
 
         onPress: function (){

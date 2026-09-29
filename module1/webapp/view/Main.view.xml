@@ -9,6 +9,19 @@
         </HBox>
         <Text id="idSubtitle" text="{i18n>subtitle}"/>
 
+        <Label text="Cliente: {Cliente>/Clientes/1/Nombre} - Dineros: {Cliente>/Clientes/1/Cartera}"/>
+        <Text text="Carrito: {Cliente>/Carrito/0} - {Cliente>/Carrito/1} - {Cliente>/Carrito/2}"/>
+
+        <List
+            headerText="Compras"
+            headerLevel="H2"
+            items="{ path: 'Cliente>/Clientes'}">
+            <StandardListItem title="{Cliente>Nombre}" counter="{Cliente>Cartera}"/>
+        </List>
+
+        <Text text="{Fruta>/Precio} {Fruta>/Unidad}"/>
+        <Input id="iFruta"/>
+        <Button text="Cambio" press="onFruta"/>
 
         <Panel id="idDesplazarTexto" expandable="true" headerText="{i18n>desplazar}" width="auto" class="sapUiResponsiveMargin">
             <content>
@@ -25,7 +38,7 @@
                     <Button id="anadir" text="Añadir texto" press="onAnhadir"/> 
                 </HBox>
 
-                <Text text="Nombre: {modeloPrueba>/Name} - Age: {modeloPrueba>/Age}"></Text>
+                
             </content>
 	    </Panel>
 
