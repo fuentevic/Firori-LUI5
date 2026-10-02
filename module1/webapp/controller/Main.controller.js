@@ -47,11 +47,47 @@ sap.ui.define([
                     Unidad: "€"
                 }
             );
-
             
             this.getView().setModel(fModel, "Fruta");
-            
-        },
+
+            let pModel = new JSONModel(
+                {
+                    PadresCole:
+                    [
+                        {
+                            Nombre: "luis",
+                            Edad: 34,
+                            Hijo: "Luis",
+                            Material: ["lapiz", "boli", "libro","goma"],
+                            Pagos: true 
+                        },
+                        {
+                            Nombre: "victor",
+                            Edad: 25,
+                            Hijo: "José",
+                            Material: ["lapiz", "boli", "goma"],
+                            Pagos: true  
+                        },
+                        {
+                            Nombre: "paco",
+                            Edad: 54,
+                            Hijo: "Fran",
+                            Material: ["boli", "libro","goma"],
+                            Pagos: false 
+                        },
+                        {
+                            Nombre: "pepe",
+                            Edad: 41,
+                            Hijo: "José",
+                            Material: ["lapiz", "libro","goma"],
+                            Pagos: true 
+                        }
+                    ]
+                }
+            );
+            this.getView().setModel(pModel, "PadresCole"); //Declara el modelo en la Vista
+                      
+        },//Oninit fin
 
         onFruta: function()
         {
@@ -148,32 +184,57 @@ sap.ui.define([
 
             
             onComprobarEdadAdulto: function() {
+            //CONVERSION TEXTO - Debe meterse en una función y llamarse cada vez.
             let aInput = this.getView().byId("NombrePadre").getValue();
-            let iInput = this.getView().byId("SliderPadre").getValue();   
-            let padres = ["luis","victor","pepe","paco"];
-            let aBundle = this.getView().getModel("i18n").getResourceBundle();     
+            let NFDaInput = aInput.normalize("NFD"); // separa letras y acentos
+            let aNFDaInput = NFDaInput.replace(/[\u0300-\u036f]/g, ""); // elimina los acentos
+            let MaNFDaInput = aNFDaInput.toLowerCase(); //minúsculas
+            let EMaNFDaInput = MaNFDaInput.trim(); //quitar espacios
             
-            for (let i=1; i<=padres.length-1;i++){
-               if (this.controlpadre == "ok"){
-                break;
-                    if (aInput== padres[i-1]){
-                    //activa slider
-                    this.getView().byId("LabelRespuestaPadre").setText(aBundle.getText("PadreBBDD"));
-                    this.getView().byId("SliderPadre").setEnabled(true);
-                    this.controlpadre= "ok";
-                     break;
+            //aInput = EMaNFDaInput; //Devuelve el valor transformado a la variable inicial
+        
+            //FIN CONVERSION TEXTO
+
+            let iInput = this.getView().byId("SliderPadre").getValue();   
+            // let padres = ["luis","victor","pepe","paco"];  //Array antiguo
+            let aBundle = this.getView().getModel("i18n").getResourceBundle(); 
+            let aPadres = this.getView().getModel("PadresCole").getProperty("/PadresCole");
+            
+           
+            if (this.controlpadre==false) {      //Variable Global
+           
+
+               //for (let i=1; i<=padres.length-1;i++){ //Control de datos en la BBDD - Con ARRAY
+                for (let i=1;i<=aPadres.length;i++){
+                    //if (EMaNFDaInput=== padres[i-1]){           //- Con ARRAY        
+                let modelPadre = this.getView().getModel("PadresCole").getProperty(`/PadresCole/${i-1}/Nombre`); //Inicial this.getView().getModel("PadresCole").getProperty("/PadresCole/"+i+"/Nombre");           
+                    if (EMaNFDaInput=== modelPadre){
+                        
+                        this.getView().byId("LabelRespuestaPadre").setText(aBundle.getText("PadreBBDD"));
+                        this.getView().byId("SliderPadre").setEnabled(true); //activa slider
+                        this.getView().byId("SliderPadre").setValue(this.getView().getModel("PadresCole").getProperty(`/PadresCole/${i-1}/Edad`));
+                        this.getView().byId("EdadPadre2").setText(" "+ this.getView().getModel("PadresCole").getProperty(`/PadresCole/${i-1}/Edad`)); //this.getView().getModel("PadresCole").getProperty("/PadresCole/"+i-1+"/Edad"));
+                        this.getView().byId("NombrePadre").setValue(aInput); //republica el valor del input - borrado en el Else
+                        this.getView().byId("NombrePadre").setEnabled(false); //desactiva el Input
+                        this.controlpadre= true;
+                     break; //Sale de la funcion si se cumple lo que hay en el if 
                 }
                 else{this.getView().byId("LabelRespuestaPadre").setText(aBundle.getText("PadreNoBBDD"));
+                    this.getView().byId("NombrePadre").setValue("");
                 }
                 }
-            };
-
-            if (this.getView().byId("SliderPadre").getEnabled() == true){
-            
             }
-            if (this.controlpadre=="ok") {
-                if (iInput>18) { // Control de Posibles Errores - Edad introducida es correcta, entre 0 y 150
+            
+            
+            else{ //Si variable global == true
+
+            
+            if (iInput>18) { //Si cumple con la Edad el padre
             this.getView().byId("LabelRespuestaPadre").setText(aBundle.getText("Autorizado"));
+            this.getView().byId("NombrePadre").setValue("");
+            this.getView().byId("SliderPadre").setValue(50);
+            this.getView().byId("SliderPadre").setEnabled(false);
+            this.controlpadre= false;
             }
             
             
@@ -181,11 +242,7 @@ sap.ui.define([
             this.getView().byId("LabelRespuestaPadre").setText(aBundle.getText("ErrorEdad2"));
             }
         }
-            else {
-            this.getView().byId("LabelRespuestaPadre").setText(aBundle.getText("PadreNoBBDD"));  
-            }
-            //let oBundle = this.getView().getModel("i18n").getResourceBundle();
-
+            
 
 
             //TODO: Comprobar que el adulto ha introducido bien los datos

@@ -70,6 +70,11 @@
                             enabled="false"/>
                         </HBox>
                         <HBox alignItems="Center">
+                            <Text id="Desciptivo3EJ1" text="{i18n>Desciptivo3EJ1}"/>
+                            <Label id="EdadPadre2" text="Por definir"/>
+
+                        </HBox>
+                        <HBox alignItems="Center">
                             <Button id="ComprobarEdadAdulto" text="{i18n>CompEdad}" press="onComprobarEdadAdulto"
                             enabled="false"/> 
                         </HBox>
