@@ -98,19 +98,26 @@ sap.ui.define([
 
         },
 
-        onPress: function (){
-            if(this.txtIzquierda != 1){    //si global texto izq es distinto de 0, coge el texto de idSaludo y mételo en la variante global.
+        onPress: function ()
+        {
+            if(this.txtIzquierda != 1) //si global texto izq es distinto de 0, coge el texto de idSaludo y mételo en la variante global.
+            {    
                this.getView().byId("idSubtitle").setText(this.txtIzquierda);
-            }else{ //Sino, toma el valor de idSaludo y guardalo en global
+            }
+            else //Sino, toma el valor de idSaludo y guardalo en global
+            {
                 this.txtIzquierda = this.getView().byId("idSaludo").getText();
                 this.txtDerecha = this.getView().byId("idSubtitle").getText();
                 this.getView().byId("idSubtitle").setText(this.txtIzquierda);
             }
             
-            if(this.txtDerecha != 1){
+            if(this.txtDerecha != 1)
+            {
                 //this.txtDerecha = this.getView().byId("idSubtitle").getText();
                 this.getView().byId("idSaludo").setText(this.txtDerecha);
-            }else{
+            }
+            else
+            {
                 this.getView().byId("idSaludo").setText(this.txtDerecha);
             }
 
@@ -118,110 +125,112 @@ sap.ui.define([
             this.txtDerecha = this.getView().byId("idSubtitle").getText();           
         
         },
-        onPress1: function (){
-
+        
+        onPress1: function ()
+        {
             this.getView().byId("idSubtitle").setText(this.txtIzquierda);
             this.getView().byId("idSaludo").setText(this.txtDerecha);
-
         },
         
-        onPress2: function (){
-
+        onPress2: function ()
+        {
             this.getView().byId("idSubtitle").setText("");
             this.getView().byId("idSaludo").setText("");
-
         },
 
-        onDesplazar(){
+        onDesplazar()
+        {
             let sIzqTexto = this.getView().byId("primerTextoEJ1").getText();
+        
             this.getView().byId("segundoTextoEJ1").setText(sIzqTexto);
         },
 
-        onAnhadir: function (){
+        onAnhadir: function ()
+        {
             let oInput = this.getView().byId("inputEJ");
+        
             this.getView().byId("primerTextoEJ1").setText(oInput.getValue());
-
             this.getView().getModel("modeloPrueba").setProperty("/Age",oInput.getValue());
-
         },
 
         //Ejercicio 1:
-        onComprobarEdad: function (){
+        onComprobarEdad: function ()
+        {
             let eInput = this.getView().byId("inputEJ1").getValue();
             let oBundle = this.getView().getModel("i18n").getResourceBundle();
 
-            if (eInput>=0 && eInput<=150){ // Control de Posibles Errores - Edad introducida es correcta, entre 0 y 150
-    
-     
-            if (eInput < 18){ 
-                this.getView().byId("label2EJ1").setText(oBundle.getText("Menor"));
-                //console.log(this.getView().byId("NombrePadre").getEnabled());
-                this.getView().byId("NombrePadre").setEnabled(true); //Mostrar sección Datos Padre de la Vista
-                //this.getView().byId("SliderPadre").setEnabled(true);
-                this.getView().byId("ComprobarEdadAdulto").setEnabled(true);
+            if (eInput>=0 && eInput<=150)  // Control de Posibles Errores - Edad introducida es correcta, entre 0 y 150
+            {
+                if (eInput < 18)
+                { 
+                    this.getView().byId("label2EJ1").setText(oBundle.getText("Menor"));
+                    //console.log(this.getView().byId("NombrePadre").getEnabled());
+                    this.getView().byId("NombrePadre").setEnabled(true); //Mostrar sección Datos Padre de la Vista
+                    //this.getView().byId("SliderPadre").setEnabled(true);
+                    this.getView().byId("ComprobarEdadAdulto").setEnabled(true);
 
                 // TODO: SI ES MENOR DE EDAD, HAZ ENABLED LOS INPUTS DE LA SECCIÓN "DATOS PADRE" DE LA VISTA
                 // PISTA: Mirar métodos del elemento/os UI5 
                 // CÓDIGO
+                }
+                else if (eInput >= 18 && eInput < 67) 
+                {
+                    this.getView().byId("label2EJ1").setText(oBundle.getText("Mayor"));
+                }
+                else 
+                {
+                    this.getView().byId("label2EJ1").setText(oBundle.getText("Jubilado"));
+                };                                               
             }
-            else if (eInput >= 18 && eInput < 67) {
-                this.getView().byId("label2EJ1").setText(oBundle.getText("Mayor"));
-            }
-            else {
-                this.getView().byId("label2EJ1").setText(oBundle.getText("Jubilado"));
-            };
-             
-                 
-
-        
-    }
-     else {
+            else 
+            {
                 this.getView().byId("label2EJ1").setText(oBundle.getText("ErrorEdad"));
             }
-    },
+        },
 
             // SEGUIMOS EN EL EJERCICIO 1:
 
             
-            onComprobarEdadAdulto: function() {
-                let aBundle = this.getView().getModel("i18n").getResourceBundle();
+        onComprobarEdadAdulto: function() 
+        {
+            let aBundle = this.getView().getModel("i18n").getResourceBundle();
 
-                //CONVERSION TEXTO - Debe meterse en una función y llamarse cada vez.
-                let aInput = this.getView().byId("NombrePadre").getValue();
-                /* let NFDaInput = aInput.normalize("NFD"); // separa letras y acentos
-                let aNFDaInput = NFDaInput.replace(/[\u0300-\u036f]/g, ""); // elimina los acentos
-                let MaNFDaInput = aNFDaInput.toLowerCase(); //minúsculas
-                let EMaNFDaInput = MaNFDaInput.trim(); //quitar espacios */
+            //CONVERSION TEXTO - Debe meterse en una función y llamarse cada vez.
+            let aInput = this.getView().byId("NombrePadre").getValue();
+            /* let NFDaInput = aInput.normalize("NFD"); // separa letras y acentos
+            let aNFDaInput = NFDaInput.replace(/[\u0300-\u036f]/g, ""); // elimina los acentos
+            let MaNFDaInput = aNFDaInput.toLowerCase(); //minúsculas
+            let EMaNFDaInput = MaNFDaInput.trim(); //quitar espacios */  
+            let sNombrePadreNorm = this.normalizaTexto(aInput); 
                 
-                let sNombrePadreNorm = this.normalizaTexto(aInput); 
-                
-                //aInput = EMaNFDaInput; //Devuelve el valor transformado a la variable inicial
+            //aInput = EMaNFDaInput; //Devuelve el valor transformado a la variable inicial
             
-                //FIN CONVERSION TEXTO
+            //FIN CONVERSION TEXTO
 
-                let iInput = this.getView().byId("SliderPadre").getValue(); // Edad padre (Slider)
-                // let padres = ["luis","victor","pepe","paco"];  //Array antiguo
-                let aPadres = this.getView().getModel("PadresCole").getProperty("/PadresCole"); // Conjunto de nombres padre
+            let iInput = this.getView().byId("SliderPadre").getValue(); // Edad padre (Slider)
+            // let padres = ["luis","victor","pepe","paco"];  //Array antiguo
+            let aPadres = this.getView().getModel("PadresCole").getProperty("/PadresCole"); // Conjunto de nombres padre
 
-                let oPadres = aPadres.filter(
-                                (oPadre) => {
-                                        if(oPadre.Nombre == sNombrePadreNorm)
-                                        {
-                                            return oPadre;
-                                        } 
-                                }
-                            );
-                
-                if(oPadres.length > 0) // Si existe algún padre en la BBDD
-                {
-                    this.getView().byId("LabelRespuestaPadre").setText(aBundle.getText("PadreBBDD"));
-                    //this.getView().byId("SliderPadre").setEnabled(true); //activa slider
-                    this.getView().byId("SliderPadre").setValue(oPadres[0].Edad)//this.getView().byId("SliderPadre").setValue(this.getView().getModel("PadresCole").getProperty(`/PadresCole/${i-1}/Edad`));
-                    this.getView().byId("EdadPadre2").setText(" "+oPadres[0].Edad);//this.getView().byId("EdadPadre2").setText(" "+ this.getView().getModel("PadresCole").getProperty(`/PadresCole/${i-1}/Edad`)); //this.getView().getModel("PadresCole").getProperty("/PadresCole/"+i-1+"/Edad"));
-                    //this.getView().byId("NombrePadre").setValue(aInput); //republica el valor del input - borrado en el Else
-                    this.getView().byId("NombrePadre").setEnabled(false); //desactiva el Input
-                    this.controlpadre= true;
+            let oPadres = aPadres.filter
+            (
+                (oPadre) => {
+                        if(oPadre.Nombre == sNombrePadreNorm)
+                        {
+                            return oPadre;
+                        } 
                 }
+            );
+                
+            if(oPadres.length > 0) // Si existe algún padre en la BBDD
+            {
+                this.getView().byId("LabelRespuestaPadre").setText(aBundle.getText("PadreBBDD"));
+                //this.getView().byId("SliderPadre").setEnabled(true); //activa slider
+                this.getView().byId("SliderPadre").setValue(oPadres[0].Edad)//this.getView().byId("SliderPadre").setValue(this.getView().getModel("PadresCole").getProperty(`/PadresCole/${i-1}/Edad`));
+                this.getView().byId("EdadPadre2").setText(" "+oPadres[0].Edad);//this.getView().byId("EdadPadre2").setText(" "+ this.getView().getModel("PadresCole").getProperty(`/PadresCole/${i-1}/Edad`)); //this.getView().getModel("PadresCole").getProperty("/PadresCole/"+i-1+"/Edad"));
+                //this.getView().byId("NombrePadre").setValue(aInput); //republica el valor del input - borrado en el Else
+                this.getView().byId("NombrePadre").setEnabled(false); //desactiva el Input
+                this.controlpadre= true;
+            }
             
                 /* if (this.controlpadre==false) //Variable Global
                 {
@@ -287,12 +296,15 @@ sap.ui.define([
 
             return EMaNFDaInput; // Retornamos nombre padre normalizado
         },
+
         //Ejercicio 2:
-        onComprobarDia: function (){
+        onComprobarDia: function ()
+        {
             let diaInput = this.getView().byId("inputEJ2").getValue();
             let dBundle = this.getView().getModel("i18n").getResourceBundle();
             
-            switch (diaInput) {
+            switch (diaInput) 
+            {
                 case "lunes":
                    this.getView().byId("label2EJ2").setText(dBundle.getText("Inicio"));
                    break;
@@ -316,16 +328,19 @@ sap.ui.define([
          * PISTA: MIRAR LA DOCUMENTACIÓN SOBRE MÉTODOS DE UN OBJETO STRING. 
          *        STRING METHODS: https://www.w3schools.com/js/js_string_methods.asp 
          */
-        newOnComprobarDia: function (){
+        newOnComprobarDia: function ()
+        {
             //TODO
         },
         
         //EJERCICIO 3:
-        onTabla5: function (){
+        onTabla5: function ()
+        {
             let resultado =""
 
-            for (let i=1; i<=10; i++){
-                resultado += `5 x ${i} = ${5*i}\n`                           //COMENTAR CON VÍCTOR DIFERENCIA ENTRE ACENTO Y COMILLA (llamados Batticks) + otras formas de concatenar  
+            for (let i=1; i<=10; i++)
+            {
+                resultado += `5 x ${i} = ${5*i}\n`        //COMENTAR CON VÍCTOR DIFERENCIA ENTRE ACENTO Y COMILLA (llamados Batticks) + otras formas de concatenar  
             }
             this.getView().byId("DesciptivoEJ3").setText(resultado);
         },
@@ -346,10 +361,12 @@ sap.ui.define([
         },
 
         //EJERCICIO 4:
-        onSalto3: function (){
+        onSalto3: function ()
+        {
             let resultado2 =""
 
-            for (let i=1; i<=5; i++){
+            for (let i=1; i<=5; i++)
+            {
                 if (i==3) continue;
                 resultado2 += `${i}\n`                             
             }
@@ -357,11 +374,13 @@ sap.ui.define([
         }, 
         
         //EJERCICIO 5:
-        onPares:  function (){
+        onPares:  function ()
+        {
             let j =2
             let resultado5 =""
 
-            while (j<=10){
+            while (j<=10)
+            {
                 resultado5 += `${j}\n`
                 j+=2;                             
             }
@@ -369,27 +388,33 @@ sap.ui.define([
         },
         
         //EJERCICIO 6:
-        onEstricto: function (){
+        onEstricto: function ()
+        {
             let A = 5;
             let B = "5";
             let eBundle = this.getView().getModel("i18n").getResourceBundle();
 
-            if (A === B){
+            if (A === B)
+            {
                 this.getView().byId("DesciptivoEJ6").setText(eBundle.getText("IguEst"));
             }
-            else if (A == B) {
+            else if (A == B) 
+            {
                 this.getView().byId("DesciptivoEJ6").setText(eBundle.getText("IguVal"));
             }
-            else {
+            else 
+            {
                 this.getView().byId("DesciptivoEJ6").setText(eBundle.getText("NoCompEst"));
             }
-            },
+        },
 
         //EJERCICIO 7:
-        onBreak: function (){
+        onBreak: function ()
+        {
             let resultado7 =""
 
-            for (let i=1; i<=10; i++){
+            for (let i=1; i<=10; i++)
+            {
                 if (i==7) break;
                 resultado7 += `${i}\n`                             
             }
@@ -397,18 +422,22 @@ sap.ui.define([
         },
 
         //EJERCICIO 8:
-        onComprobarConducir:function (){
+        onComprobarConducir:function ()
+        {
             let edadInput = 1;
             let conduInput= "";
             edadInput= this.getView().byId("inputEJ8").getValue();
             conduInput = this.getView().byId("input2EJ8").getValue();
             let cBundle = this.getView().getModel("i18n").getResourceBundle();
-                if(edadInput>=18 && conduInput=="Si"){
-                    this.getView().byId("label2EJ8").setText(cBundle.getText("PCond"));
-                }
-                else {
-                    this.getView().byId("label2EJ8").setText(cBundle.getText("NPCond"));
-                }
+            
+            if(edadInput>=18 && conduInput=="Si")
+            {
+                this.getView().byId("label2EJ8").setText(cBundle.getText("PCond"));
+            }
+            else
+            {
+                this.getView().byId("label2EJ8").setText(cBundle.getText("NPCond"));
+            }
         }
     });
 });
