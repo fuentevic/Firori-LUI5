@@ -109,9 +109,10 @@
                     <VBox>
                         <HBox>
                             <Label id="labelEJ3" text="{i18n>LabelTabla}"/>
-                            <Input id="inputMultiplicador" value="0" placeholder="Introduce multiplicador..."/>
+                            <Input id="inputMultiplicador" placeholder="Introduce multiplicador..."/> 
                         </HBox>
                         <Button id="Tabla5" text="{i18n>Tabla5}" press="onTabla5"/> 
+                        <Button id="TablaMultip" text="{i18n>TablaMultip}" press="onTablaMultip"/>
                         <HBox alignItems="Center">
                             <Text id="DesciptivoEJ3" text="{i18n>DesciptivoEJ3}"/>
                         </HBox>

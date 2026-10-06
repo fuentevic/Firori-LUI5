@@ -95,7 +95,6 @@ sap.ui.define([
             let inputPrecio = this.getView().byId("iFruta").getValue();
 
             this.getView().getModel("Fruta").setProperty("/Precio", inputPrecio);
-
         },
 
         onPress: function ()
@@ -297,26 +296,35 @@ sap.ui.define([
             return EMaNFDaInput; // Retornamos nombre padre normalizado
         },
 
-        //Ejercicio 2:
+        //Ejercicio 2: Comprueba el día de la semana publicado en el input.
         onComprobarDia: function ()
         {
             let diaInput = this.getView().byId("inputEJ2").getValue();
-            let dBundle = this.getView().getModel("i18n").getResourceBundle();
-            
-            switch (diaInput) 
+            let dBundle = this.getView().getModel("i18n").getResourceBundle(); //Modelo de Traducciones
+            let sDiaNorm = this.normalizaTexto(diaInput); // Llamo a la función para normalizar el texto del Input      
+
+            switch (sDiaNorm) 
             {
                 case "lunes":
                    this.getView().byId("label2EJ2").setText(dBundle.getText("Inicio"));
                    break;
-                case "miércoles":
+                case "miercoles":
                    this.getView().byId("label2EJ2").setText(dBundle.getText("Mitad"));
                    break;
-                case "sábado":
+                case "martes":
+                case "jueves":
+                case "viernes":
+                   this.getView().byId("label2EJ2").setText(dBundle.getText("Normal"));
+                   break;
+                
+                case "sabado":
                 case "domingo":
                    this.getView().byId("label2EJ2").setText(dBundle.getText("Finde"));
                    break;
+
                 default:
-                   this.getView().byId("label2EJ2").setText(dBundle.getText("Normal"));              
+                   this.getView().byId("label2EJ2").setText(dBundle.getText("ErrorDiaSemana"));
+                   this.getView().byId("inputEJ2").setValue("");
             }
             
         },
@@ -328,11 +336,8 @@ sap.ui.define([
          * PISTA: MIRAR LA DOCUMENTACIÓN SOBRE MÉTODOS DE UN OBJETO STRING. 
          *        STRING METHODS: https://www.w3schools.com/js/js_string_methods.asp 
          */
-        newOnComprobarDia: function ()
-        {
-            //TODO
-        },
-        
+
+
         //EJERCICIO 3:
         onTabla5: function ()
         {
@@ -354,11 +359,32 @@ sap.ui.define([
          *               TE DEJO LA DECLARACIÓN DEL ARRAY EN EL MÉTODO. ÚSALO SI QUIERES UN PUNTO EXTRA EN LA NOTA FINAL. (BROMA)
          *               SOLO SI USAS LOS ARRAYS COMO VARIABLE, TE DEJO LA DOCUMENTACIÓN SOBRE ELLO: https://www.w3schools.com/js/js_arrays.asp
          */
-        onTablaMultiplicar: function()
+        onTablaMultip: function()
         {
-            // let aResultado = []; // Inicialización de un array (Para el punto extra final).
-            //TODO
+            let resultado ="";
+            let sMultinput = this.getView().byId("inputMultiplicador").getValue();
+            let dBundle = this.getView().getModel("i18n").getResourceBundle();
+            let aResultado = [1,2,3,4,5,6,7,8,9,10];
+            
+            if (sMultinput >=0 && sMultinput <=10)
+            {
+                for (let i=1; i<=aResultado.length; i++)
+                    {
+                        resultado += `${sMultinput} x ${aResultado[i-1]} = ${sMultinput*aResultado[i-1]}\n`        //COMENTAR CON VÍCTOR DIFERENCIA ENTRE ACENTO Y COMILLA (llamados Batticks) + otras formas de concatenar  
+                    }
+                
+                this.getView().byId("DesciptivoEJ3").setText(resultado);
+                
+                // let aResultado = []; // Inicialización de un array (Para el punto extra final).
+                //TODO
+            }
+            else 
+            {
+                this.getView().byId("DesciptivoEJ3").setText(dBundle.getText("NumeroErroneo")); 
+            }
         },
+
+        //onTablaArray {}
 
         //EJERCICIO 4:
         onSalto3: function ()
