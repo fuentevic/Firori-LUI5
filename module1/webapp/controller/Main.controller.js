@@ -464,6 +464,11 @@ sap.ui.define([
             {
                 this.getView().byId("label2EJ8").setText(cBundle.getText("NPCond"));
             }
+        },
+
+        onNavegacion: function ()
+        {
+            this.getOwnerComponent().getRouter().navTo("Main2");
         }
     });
 });

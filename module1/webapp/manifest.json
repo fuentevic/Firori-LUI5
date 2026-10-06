@@ -79,12 +79,23 @@
           "target": [
             "TargetMain"
           ]
+        },
+        {
+          "name": "Main2",
+          "pattern": "Main2",
+          "target": [
+            "Main2"
+          ]
         }
       ],
       "targets": {
         "TargetMain": {
           "id": "Main",
           "name": "Main"
+        },
+        "Main2":{
+          "id": "Main2",
+          "name": "Main2"
         }
       }
     },
