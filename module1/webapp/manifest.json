@@ -86,6 +86,13 @@
           "target": [
             "Main2"
           ]
+        },
+        {
+          "name": "Main3",
+          "pattern": "Main3",
+          "target": [
+            "Main3"
+          ]
         }
       ],
       "targets": {
@@ -96,6 +103,10 @@
         "Main2":{
           "id": "Main2",
           "name": "Main2"
+        },
+        "Main3":{
+          "id": "Main3",
+          "name": "Main3"
         }
       }
     },

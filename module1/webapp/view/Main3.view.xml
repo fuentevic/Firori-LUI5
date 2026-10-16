@@ -1,0 +1,12 @@
+<mvc:View controllerName="namespace.module1.controller.Main3" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m">
+    <Page id="page3" title="{i18n>title3}">
+        <VBox>
+            <Text id="idTextoVista3" text="{i18n>idTextoVista3}" class="clase1"/>
+            <HBox >
+                <Button id="CambioVista2" text="{i18n>CambioVista2}" press="onCambioVista2"/>
+                <Button id="CambioVista1" text="{i18n>CambioVista1}" press="onCambioVista1"/>
+            </HBox>  
+
+        </VBox>
+    </Page>
+</mvc:View>

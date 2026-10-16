@@ -1,13 +1,133 @@
 <mvc:View controllerName="namespace.module1.controller.Main2" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m">
-    <Page id="page2" title="{i18n>title}">
+    <Page id="page2" title="{i18n>title2}">
         <VBox>
-        <Text id="idSaludo2" text="{i18n>saludo}" class="clase1"/>
-        <HBox>
-        <Button id="button222" type="Accept" text="{i18n>aceptar}" press="onPress"/>
-        <Button id="button12" type="Reject" text="{i18n>rechazar}" press="onPress1"/>
-        <Button id="button22" type="Reject" text="{i18n>borrar}" press="onPress2"/>
-        </HBox>
-        <Text id="idSubtitle2" text="{i18n>subtitle}"/>
+        <Text id="idSaludo2" text="{i18n>saludo2}" class="clase1"/>
+        <Text id="idSaludo3" text="{i18n>saludo3}" class="clase2"/>
+        <Text id="idSaludo4" text="{i18n>saludo4}" class="clase3"/>
+        <Button id="CambioVista3" text="{i18n>CambioVista3}" press="onCambioVista3"/>
+  
+        
+        <!--EJERCICIO 3.1-->
+        <Panel id="idEjercicio3.1" expandable="true" headerText="{i18n>Ejercicio3.1}" width="auto" class="sapUiResponsiveMargin">
+            <content>
+                 <VBox>
+                    <Label id="labelEJ3.1" text="{i18n>labelEJ3.1}"/>
+                    <Button id="ButtonEJ3.1" text="{i18n>ButtonEJ3.1}" press="onImprimirValorCiudadano"/> 
+                    <Text id="DesciptivoEJ3.1" text="{i18n>DesciptivoEJ3.1}"/>
+                    <Label id="label2EJ3.1" text=""/>
+                </VBox>
+
+            </content>
+	    </Panel>        
+        
+
+        <!--EJERCICIO 3.2-->
+        <Panel id="idEjercicio3.2" expandable="true" headerText="{i18n>Ejercicio3.2}" width="auto" class="sapUiResponsiveMargin">
+            <content>
+                 <VBox>
+                    <Text id="DesciptivoEJ3.2" text="{i18n>DesciptivoEJ2}"/>
+                    <Button id="MostrarEJ3.2" text="{i18n>MostrarEJ3.2}" press="onMostrarDatos"/>
+                    <Label id="labelEJ3.2" text="{i18n>labelEJ3.2}"/>
+                            <Panel id="idPanelInfo" expandable="true" headerText="{i18n>idPanelInfo}" width="auto" class="sapUiResponsiveMargin">
+                                    <content>
+                                        <VBox>                                                                                    
+                                            <Input id="inputEJ3.2Edad" placeholder="{i18n>inputEJ3.2Edad}"/>
+                                            <Input id="inputEJ3.2Empresa" placeholder="{i18n>inputEJ3.2Empresa}"/>
+                                            <Input id="inputEJ3.2Ciudad" placeholder="{i18n>inputEJ3.2Ciudad}"/>                                            
+                                            <Button id="ButtonEJ3.2" text="{i18n>ButtonEJ3.2}" press="onActualizarDatos"/> 
+                                            <HBox alignItems="Center">
+                                                <Text id="ResultadoEJ3.2" text="{i18n>NuevaSituacion}"/>
+                                                <Label id="label2EJ3.2" text="{i18n>label2EJ3.2}"/>
+                                            </HBox>
+                                        </VBox>
+
+                                    </content>
+                                </Panel>
+                    
+                   
+                    <HBox alignItems="Center">
+
+                    </HBox>
+                </VBox>
+
+            </content>
+	    </Panel>
+
+
+        <!--EJERCICIO 3.3-->
+        <Panel id="idEjercicio3.3" expandable="true" headerText="{i18n>Ejercicio3.3}" width="auto" class="sapUiResponsiveMargin">
+            <content>
+                 <VBox>
+                    <Label id="labelEJ3.3" text="{i18n>LabelDia}"/>
+                    <Input id="inputEJ3.3" placeholder="{i18n>PlaceHDia}"/>
+                    <Button id="ButtonEJ3.3" text="{i18n>CompDia}" press="onComprobarDia"/> 
+                    <HBox alignItems="Center">
+                        <Text id="DesciptivoEJ3.3" text="{i18n>DesciptivoEJ2}"/>
+                        <Label id="label2EJ3.3" text="{i18n>LabelSemana}"/>
+                    </HBox>
+                </VBox>
+ 
+            </content>
+	    </Panel>
+
+
+        <!--EJERCICIO 3.4-->
+        <Panel id="idEjercicio3.4" expandable="true" headerText="{i18n>Ejercicio3.4}" width="auto" class="sapUiResponsiveMargin">
+            <content>
+                 <VBox>
+                    <Label id="labelEJ3.4" text="{i18n>LabelDia}"/>
+                    <Input id="inputEJ3.4" placeholder="{i18n>PlaceHDia}"/>
+                    <Button id="ButtonEJ3.4" text="{i18n>CompDia}" press="onComprobarDia"/> 
+                    <HBox alignItems="Center">
+                        <Text id="DesciptivoEJ3.4" text="{i18n>DesciptivoEJ2}"/>
+                        <Label id="label2EJ3.4" text="{i18n>LabelSemana}"/>
+                    </HBox>
+                </VBox>
+
+            </content>
+	    </Panel>
+
+
+        <!--EJERCICIO 3.5-->
+        <Panel id="idEjercicio3.5" expandable="true" headerText="{i18n>Ejercicio3.5}" width="auto" class="sapUiResponsiveMargin">
+            <content>
+                 <VBox>
+                    <Label id="labelEJ3.5" text="{i18n>LabelDia}"/>
+                    <Input id="inputEJ3.5" placeholder="{i18n>PlaceHDia}"/>
+                    <Button id="ButtonEJ3.5" text="{i18n>CompDia}" press="onComprobarDia"/> 
+                    <HBox alignItems="Center">
+                        <Text id="DesciptivoEJ3.5" text="{i18n>DesciptivoEJ2}"/>
+                        <Label id="label2EJ3.5" text="{i18n>LabelSemana}"/>
+                    </HBox>
+                </VBox>
+
+            </content>
+	    </Panel>
+
+
         </VBox>
-    </Page>
+
+
+        <!--EJERCICIO 3.6-->
+        <Panel id="idEjercicio3.6" expandable="true" headerText="{i18n>Ejercicio3.6}" width="auto" class="sapUiResponsiveMargin">
+            <content>
+                 <VBox>
+                    <Label id="labelEJ3.6" text="{i18n>LabelDia}"/>
+                </VBox>
+
+            </content>
+	    </Panel>
+
+
+        <!--EJERCICIO 3.7-->
+        <Panel id="idEjercicio3.7" expandable="true" headerText="{i18n>Ejercicio3.7}" width="auto" class="sapUiResponsiveMargin">
+            <content>
+                 <VBox>
+                    <Label id="labelEJ3.7" text="{i18n>LabelDia}"/>
+                </VBox>
+
+            </content>
+	    </Panel>
+
+    </Page>    
 </mvc:View>

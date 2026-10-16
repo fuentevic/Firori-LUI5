@@ -5,6 +5,8 @@ sap.ui.define([
   "use strict";
 
   var variableGlobal;
+          
+
 
   return Controller.extend("namespace.module1.controller.Main2", {
       onInit() {
@@ -23,7 +25,7 @@ sap.ui.define([
 
             // TODO: TERNARIA 
             //console.log("Hola, me llamo " + this.nombre + ". Tengo " + this.edad + `(${this.estaTrabajando} == true) ? 'y sigo trabajando' : 'y estoy sin trabajo'`);
-            
+            console.log("Hola, me llamo " + this.nombre + ". Tengo " + this.edad + ((this.estaTrabajando) ? 'y sigo trabajando' : 'y estoy sin trabajo'));
           },
           getTrabajando: function (){
             return this.estaTrabajando;
@@ -82,6 +84,71 @@ sap.ui.define([
         let objetoJS = JSON.parse(modeloJSON);
         console.log(objetoJS);
 
+        this.Ciudadano2 ={
+          nombre: "Luis",
+          edad: 56,
+          estaTrabajando2: true,
+          Empresa2: "Accenture",
+          profesion: "Desarrollador SAP UI5"
+
+        };    
+      },
+
+      onCambioVista3: function ()
+        {
+            this.getOwnerComponent().getRouter().navTo("Main3");
+        },
+
+      //Ejercicio 3.1 - Crea un objeto llamado persona con las propiedades nombre, edad y profesion. Luego imprime el valor de nombre y edad.
+      onImprimirValorCiudadano: function () 
+      {
+        //Declaro el Objeto Ciudadano y las variables necesarias
+        const Ciudadano ={
+          nombre: "Luis",
+          edad: 56,
+          profesion: "Desarrollador SAP UI5"
+
+        };        
+        let sBundle = this.getView().getModel("i18n").getResourceBundle(); //Modelo de Traducciones
+        let sResultadoCiudadano = "Hola, me llamo " + Ciudadano.nombre + ", tengo " + Ciudadano["edad"] + " años y mi profesión es la de " + Ciudadano.profesion + "."; 
+        //Accedo con "." y con [""]
+
+        //Declaro lógica de mostrar resultados
+        this.getView().byId("DesciptivoEJ3.1").setText(sResultadoCiudadano);
+        this.getView().byId("label2EJ3.1").setText(sBundle.getText("GraciasUso"));
+      },
+      
+      //Ejercicio 3.2 - Cambia la edad de persona y agrega una nueva propiedad ciudad.
+      onMostrarDatos: function ()
+      {
+        //Declaro el Objeto Ciudadano2 como Global 
+
+        let sBundle = this.getView().getModel("i18n").getResourceBundle(); //Modelo de Traducciones
+        let sResultadoCiudadano2 = "Hola, me llamo " + this.Ciudadano2.nombre + ", tengo " + this.Ciudadano2["edad"] + " años y mi empresa actual es " + this.Ciudadano2.Empresa2 + "."; 
+        
+        //Declaro lógica de mostrar resultados
+        this.getView().byId("labelEJ3.2").setText(sResultadoCiudadano2);
+               
+      },
+
+      onActualizarDatos: function() 
+      {
+
+        let iNuevaEdad = this.getView().byId("inputEJ3.2Edad").getValue();
+        let sNuevaEmpresa = this.getView().byId("inputEJ3.2Empresa").getValue();
+        let sNuevaCiudad = this.getView().byId("inputEJ3.2Ciudad").getValue();
+
+        this.Ciudadano2.edad = iNuevaEdad;
+        this.Ciudadano2.Empresa2 = sNuevaEmpresa;
+        this.Ciudadano2.ciudad = sNuevaCiudad;
+        
+        //Monto el nuevo resultado      
+        let sResultadoPersona2 = "Hola, me llamo " + this.Ciudadano2.nombre + ", tengo " + this.Ciudadano2["edad"] + " años, mi empresa actual es " + this.Ciudadano2.Empresa2 + " y vivo en " + this.Ciudadano2.ciudad + ".";
+
+        //Declaro lógica de mostrar resultados
+        this.getView().byId("label2EJ3.2").setText(sResultadoPersona2);
+
       }
+
   });
 });

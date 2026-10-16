@@ -1,4 +1,17 @@
 /* Enter your custom styles here */
 .clase1 {
+    color: green;
+    font-weight: bold;
+}
+
+.clase2 {
+    color: red;
+    font-weight: lighter;
+    font-family: "Times New Roman", Times, serif; /*Comprueba si existe la primera fuente y sino salta a las siguientes. */
+    
+}
+
+.clase3 {
     color: blue;
+    font-style: italic;    
 }
