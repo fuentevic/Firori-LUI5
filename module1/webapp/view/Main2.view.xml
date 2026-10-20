@@ -58,13 +58,11 @@
         <Panel id="idEjercicio3.3" expandable="true" headerText="{i18n>Ejercicio3.3}" width="auto" class="sapUiResponsiveMargin">
             <content>
                  <VBox>
-                    <Label id="labelEJ3.3" text="{i18n>LabelDia}"/>
-                    <Input id="inputEJ3.3" placeholder="{i18n>PlaceHDia}"/>
-                    <Button id="ButtonEJ3.3" text="{i18n>CompDia}" press="onComprobarDia"/> 
-                    <HBox alignItems="Center">
-                        <Text id="DesciptivoEJ3.3" text="{i18n>DesciptivoEJ2}"/>
-                        <Label id="label2EJ3.3" text="{i18n>LabelSemana}"/>
-                    </HBox>
+                    <Text id="DesciptivoEJ3.3" text="{i18n>DesciptivoEJ3.3}"/>
+                    <Input id="inputEJ3.3" placeholder="{i18n>PlaceH3.3}"/>
+                    <Button id="ButtonEJ3.3" text="{i18n>onDevolverSaldo}" press="onDevolverSaldo"/> 
+                    <Label id="labelEJ3.3" text="{i18n>WaitingAccion}"/>                   
+
                 </VBox>
  
             </content>
@@ -75,13 +73,11 @@
         <Panel id="idEjercicio3.4" expandable="true" headerText="{i18n>Ejercicio3.4}" width="auto" class="sapUiResponsiveMargin">
             <content>
                  <VBox>
-                    <Label id="labelEJ3.4" text="{i18n>LabelDia}"/>
-                    <Input id="inputEJ3.4" placeholder="{i18n>PlaceHDia}"/>
-                    <Button id="ButtonEJ3.4" text="{i18n>CompDia}" press="onComprobarDia"/> 
-                    <HBox alignItems="Center">
-                        <Text id="DesciptivoEJ3.4" text="{i18n>DesciptivoEJ2}"/>
-                        <Label id="label2EJ3.4" text="{i18n>LabelSemana}"/>
-                    </HBox>
+                    <Text id="DesciptivoEJ3.4" text="{i18n>DesciptivoEJ3.4}"/>
+                    <Input id="inputEJ3.4.1" placeholder="{i18n>PlaceH3.4.1}"/>
+                    <Input id="inputEJ3.4.2" placeholder="{i18n>PlaceH3.4.2}"/>                    
+                    <Button id="ButtonEJ3.4" text="{i18n>onCrearAnimal}" press="onEmitirSonido"/> 
+                    <Label id="labelEJ3.4" text="{i18n>WaitingAccion}"/>                   
                 </VBox>
 
             </content>
@@ -92,13 +88,9 @@
         <Panel id="idEjercicio3.5" expandable="true" headerText="{i18n>Ejercicio3.5}" width="auto" class="sapUiResponsiveMargin">
             <content>
                  <VBox>
-                    <Label id="labelEJ3.5" text="{i18n>LabelDia}"/>
-                    <Input id="inputEJ3.5" placeholder="{i18n>PlaceHDia}"/>
-                    <Button id="ButtonEJ3.5" text="{i18n>CompDia}" press="onComprobarDia"/> 
-                    <HBox alignItems="Center">
-                        <Text id="DesciptivoEJ3.5" text="{i18n>DesciptivoEJ2}"/>
-                        <Label id="label2EJ3.5" text="{i18n>LabelSemana}"/>
-                    </HBox>
+                    <Text id="DesciptivoEJ3.5" text="{i18n>DesciptivoEJ3.5}"/>      
+                    <Button id="ButtonEJ3.5" text="{i18n>onMostrarPropiedades}" press="onMostrarPropiedades"/> 
+                    <Text id="textEJ3.5" text="{i18n>WaitingAccion}"/>                   
                 </VBox>
 
             </content>
@@ -112,7 +104,13 @@
         <Panel id="idEjercicio3.6" expandable="true" headerText="{i18n>Ejercicio3.6}" width="auto" class="sapUiResponsiveMargin">
             <content>
                  <VBox>
-                    <Label id="labelEJ3.6" text="{i18n>LabelDia}"/>
+                    <Text id="DesciptivoEJ3.6" text="{i18n>DesciptivoEJ3.6}"/>      
+                    <HBox >
+                        <Button id="ButtonAna" text="{i18n>ButtonAna}" press="onButtonAna"/>
+                        <Button id="ButtonCarlos" text="{i18n>ButtonCarlos}" press="onButtonCarlos"/>
+                        <Button id="ButtonMarta" text="{i18n>ButtonMarta}" press="onButtonMarta"/>                                            
+                    </HBox>
+                    <Text id="textEJ3.6" text="{i18n>WaitingAccion}"/>
                 </VBox>
 
             </content>
@@ -123,7 +121,20 @@
         <Panel id="idEjercicio3.7" expandable="true" headerText="{i18n>Ejercicio3.7}" width="auto" class="sapUiResponsiveMargin">
             <content>
                  <VBox>
-                    <Label id="labelEJ3.7" text="{i18n>LabelDia}"/>
+                    <Text id="DesciptivoEJ3.7" text="{i18n>DesciptivoEJ3.7}"/>
+                    <HBox >
+                        <Text id="SaldoTextEJ3.7" text="{i18n>SaldoTextEJ3.7}"/>
+                        <Label id="SaldoNumEJ3.7" text=" {CuentaBancaria>/Saldo} {CuentaBancaria>/Unidad}"/>                                   
+                    </HBox>
+                    <HBox >
+                        <Input id="InputIngresarEJ3.7" placeholder="{i18n>InputIngresarEJ3.7}"/>
+                        <Input id="InputRetirarEJ3.7" placeholder="{i18n>InputRetirarEJ3.7}"/>                     
+                    </HBox>
+                    <HBox >
+                        <Button id="ButtonIngresar" text="{i18n>ButtonIngresar}" press="onIngresar"/>
+                        <Button id="ButtonRetirar" text="{i18n>ButtonRetirar}" press="onRetirar"/>                                         
+                    </HBox>
+                        <Text id="ResultadoEJ3.7" text="{i18n>ResultadoEJ3.7}"/>                                                                                
                 </VBox>
 
             </content>
